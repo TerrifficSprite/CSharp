@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-
 namespace ex_2
 {
     public class Program
@@ -11,7 +9,6 @@ namespace ex_2
             return (float) Math.Sqrt(Math.Abs(Math.Pow(x2 - x1, 2) + 
                                               Math.Pow(y2 - y1, 2)));
         }
-
         // Получити точку з клавіатури
         public static int getDot(string which)
         {
@@ -19,7 +16,7 @@ namespace ex_2
             {
                 try
                 {
-                    Console.WriteLine("Введiть точку " + which);
+                    Console.Write("Введiть точку " + which + ": ");
                     return int.Parse(Console.ReadLine());
                 }
                 catch (Exception e)
@@ -29,28 +26,24 @@ namespace ex_2
             }
             
         }
-
         public static float perimeter(float AB, float BC, float AC)
         {
-            return AB + BC + AC;
+            float P = AB + BC + AC;
+            Console.WriteLine("Периметр трикутника: " + P);
+            return P;
         }
-
         public static float square(float AB, float BC, float AC)
         {
             float p = (AB + BC + AC) / 2;
-            return (float) Math.Sqrt(p * (p - AB) * (p - BC) * (p - AC));
+            float S = (float) Math.Sqrt(p * (p - AB) * (p - BC) * (p - AC));
+            Console.WriteLine("Площа трикутника: " + S);
+            return S;
         }
-        
         static void Main(string[] args)
         {
-            Console.WriteLine(lengthByDotes(1, 2, 3, 4));
-
-            int[] a = {1, 2, 3, 4};
-            Console.WriteLine(a.ToString());
-            
             while (true)
             {
-                Console.WriteLine("------------------------------------------" +
+                Console.WriteLine("------------------------------------------\n" +
                                   "Перейти до обчислень чи вийти з програми?\n" +
                                   "Перейти до обчислень - 1\n" +
                                   "Вийти - 2\n" +
@@ -67,7 +60,6 @@ namespace ex_2
                 {
                     Console.WriteLine("*****\nВводити можна тiльки числа!\n*****\n");
                 }
-
                 // Получити точки
                 int x1 = getDot("Ax");
                 int y1 = getDot("Ay");
@@ -80,9 +72,8 @@ namespace ex_2
                 float BC = lengthByDotes(x2, y2, x3, y3);
                 float AC = lengthByDotes(x1, y1, x3, y3);
 
-                float P = perimeter(AB, BC, AC);
-                float S = square(AB, BC, AC);
-                Console.WriteLine("Площа: " + S + "\nПериметр: " + P);
+                perimeter(AB, BC, AC);
+                square(AB, BC, AC);
             }
         }
     }

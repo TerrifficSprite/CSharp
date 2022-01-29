@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace lab_2_ex_2
 {
     public class Program
@@ -9,7 +8,6 @@ namespace lab_2_ex_2
             float cur = min;
             while (cur <= max)
             {
-                
                 Console.WriteLine(cur + "\t" + Math.Round(CalculateY(cur), 3));
                 cur += step;
                 cur = (float) Math.Round(cur, 3);
@@ -17,26 +15,22 @@ namespace lab_2_ex_2
 
             Console.WriteLine("Виконано циклом While");
         }
-        
         public static void CalculateDoWhileMethod(int min, int max, float step)
         {
             float cur = min;
             do
             {
-
                 Console.WriteLine(cur + "\t" + Math.Round(CalculateY(cur), 3));
                 cur += step;
                 cur = (float) Math.Round(cur, 3);
             } while (cur <= max);
             Console.WriteLine("Виконано циклом Do-While");
         }
-
         public static float CalculateY(float x)
         {
             return (float) Math.Round(
                 Math.Pow(Math.E, Math.Sqrt(2 * x)) * (x * x), 3);
         }
-
         static void Main(string[] args)
         {
             while (true)
@@ -50,7 +44,6 @@ namespace lab_2_ex_2
                 
                 try
                 {
-                    
                     int choice = int.Parse(Console.ReadLine());
                     if (choice == 1)
                         whileChoice = true;

@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace lab_2_ex1
 {
     public class Program
@@ -8,35 +7,26 @@ namespace lab_2_ex1
         {
             switch (lastname)
             {
-                case "Беліч":
+                case "Белiч":
                     return "Олександр";
-                
                 case "Григоращук":
                     return "Олександр";
-                
-                case "Ісопеску":
+                case "Iсопеску":
                    return "Михайло";
-                
                 case "Кожокар":
-                 return   "Діана";
-                
+                 return   "Дiана";
                 case "Няйко":
-                  return  "Андрій";
-                
-                case "Пепін":
-                   return "Євгеній";
-                
-                case "Софроній":
+                  return  "Андрiй";
+                case "Пепiн":
+                   return "Євгенiй";
+                case "Софронiй":
                    return "Михайло";
-                
                 case "Топало":
                   return  "Василь";
-                
                 default:
                     return "Такого прiзвища у нашiй групi немає";
             }
         }
-        
         static void Main(string[] args)
         {
             while (true)
@@ -61,7 +51,7 @@ namespace lab_2_ex1
                 }
                 /*** Початок програми ***/
                 Console.Write("Введiть прiзвище: ");
-                getStudentByLastname(Console.ReadLine());
+                Console.WriteLine(getStudentByLastname(Console.ReadLine()));
                 /*** Кінець програми ***/
             }
         }
