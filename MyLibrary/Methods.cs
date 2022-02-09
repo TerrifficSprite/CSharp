@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 
@@ -35,13 +36,18 @@ namespace MyLibrary
             for (int i = 0; i < list.Count; i++)
             {
                 if (i == 0)
+                {
                     builder.Append("[" + list[i]);
-                else if (i == list.Count - 1)
+                    goto Skip;
+                }
+                if (i == list.Count - 1)
                     builder.Append(", " + list[i] + "]");
                 else
                     builder.Append(", " + list[i]);
+                Skip: ;
             }
             return builder.ToString();
         }
+        
     }
 }

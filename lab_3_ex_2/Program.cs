@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-using System.Net.Mime;
 using MyLibrary;
-
 namespace lab_3_ex_2
 {
     public class Program
     {
         public static Methods lib = new Methods();
-
         public static ArrayList TenWords(StreamReader reader)
         {
             ArrayList list = new ArrayList();
@@ -21,7 +18,6 @@ namespace lab_3_ex_2
             }
             return list;
         }
-        
         public static ArrayList UnknownWords(StreamReader reader)
         {
             ArrayList list = new ArrayList();
@@ -33,7 +29,6 @@ namespace lab_3_ex_2
             }
             return list;
         }
-        
         static void Main(string[] args)
         {
             while (true)

@@ -1,4 +1,3 @@
-using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test_lab_3_ex_1

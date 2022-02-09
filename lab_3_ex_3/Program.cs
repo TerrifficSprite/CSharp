@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.IO;
 using System.Text;
-
 namespace lab_3_ex_3
 {
     public class Program
@@ -29,7 +27,6 @@ namespace lab_3_ex_3
                 if (!delete)
                     builder.Append(word + " ");
             }
-
             Console.WriteLine("Вiредагований текст: " + builder);
             writer.Write(builder.ToString());
             writer.Close();

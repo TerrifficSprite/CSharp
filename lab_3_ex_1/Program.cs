@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections;
-using System.IO;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Principal;
 using MyLibrary;
-
 namespace lab_3_ex_1
 {
     public class Program
     {
         public static char[] vowels = {'A', 'E', 'I', 'O', 'U', 'А', 'Е', 'Є', 'И', 'І', 'Ї', 'О', 'У', 'Ю', 'Я'};
-
         public static char[] consonants = 
         {
             'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z',
             'Б', 'В', 'Г', 'Ґ', 'Д', 'Ж', '3', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'X', 'Ц', 'Ч', 'Ш', 'Щ'
         };
-
         private static Methods lib = new Methods();
         public static int CountVowelWords(string text)
         {
@@ -38,14 +32,11 @@ namespace lab_3_ex_1
                     }
                     catch (Exception)
                     {
-                        
                     }
-                    
                 }
             }
             return vowelsCount;
         }
-        
         public static ArrayList PrintConsonantsWords(string text)
         {
             ArrayList arrayList = new ArrayList();
@@ -71,7 +62,6 @@ namespace lab_3_ex_1
             }
             return arrayList;
         }
-
         static void Main(string[] args)
         {
             while (true)
@@ -95,11 +85,12 @@ namespace lab_3_ex_1
                     continue;
                 }
                 /*** Початок програми ***/
+                Console.Write("Введiть рядок: ");
                 string text = Console.ReadLine();
                 Console.WriteLine("Кiлькiсть слiв, якi починаються з голосної: " + CountVowelWords(text));
                 ArrayList list = PrintConsonantsWords(text);
                 if (list.Count != 0)
-                    Console.Write("Слова в яких непарна кiлькість приголосних букв: ");
+                    Console.Write("Слова в яких непарна кiлькiсть приголосних букв: ");
                 else
                     Console.WriteLine("В текстi немає слiв з непарною кiлькiстю приголосних букв!");
                 lib.PrintArrayList(list);

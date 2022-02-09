@@ -1,6 +1,5 @@
 ﻿using System;
 using MyLibrary;
-
 namespace lab_2_ex_5
 {
     public class Program
@@ -9,7 +8,6 @@ namespace lab_2_ex_5
         private static Random random = new Random();
         private const int Min = -100;
         private const int Max = 100;
-
         private static void print_arr(int[,] array, int m, int n)
         {
             Console.WriteLine("Готовий масив: ");
@@ -61,7 +59,6 @@ namespace lab_2_ex_5
             }
             return array;
         }
-
         public static int GetElByCoords(int[,] arr, int x, int y)
         {
                     return arr[y-1, x-1];
@@ -113,7 +110,7 @@ namespace lab_2_ex_5
                         Console.WriteLine("Довжина та висота не може бути меншою за 1");
                         goto ArrayLength;
                     }
-                    
+                
                     int[,] array = keyboardChoice ? GetFromKeyboard(m, n) : GetByRandom(m, n);
                     print_arr(array, m, n);
                     int a, b;
