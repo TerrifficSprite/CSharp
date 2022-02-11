@@ -1,57 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using MyLibrary;
-namespace lab_5_ex_2
+
+namespace lab_6_ex_2
 {
-    public class ExhibitionDay : Exhibition
+    public class Exhibition : IIndividual
     {
-        private string day;
-        private int visitersCount;
-        private string comment;
+        private string exhibitionName;
+        private string artistLastname;
 
-        public ExhibitionDay()
+        public Exhibition()
         {
+            
         }
 
-        public ExhibitionDay(string exhibitionName, string artistLastname, 
-            string day, int visitersCount, string comment) : base(exhibitionName, artistLastname)
+        public Exhibition(string exhibitionName, string artistLastname)
         {
-            Day = day;
-            VisitersCount = visitersCount;
-            Comment = comment;
+            this.exhibitionName = exhibitionName;
+            this.artistLastname = artistLastname;
         }
+        // Кінець конструктори
         
-        public string Day
-        {
-            get => day;
-            set
-            {
-                if (value != "Понедiлок" && value != "Вiвторок" && value != "Середа" &&
-                    value != "Четвер" && value != "П'ятниця" && value != "Субота" &&
-                    value != "Недiля")
-                        throw new Exception("Такого дня тижня не iснує!");
-                day = value;
-            }
-        }
-
-        public int VisitersCount
-        {
-            get => visitersCount;
-            set => visitersCount = value;
-        }
-
-        public string Comment
-        {
-            get => comment;
-            set => comment = value;
-        }
-
-        public override string ToString()
-        {
-            return $"Виставка: {ExhibitionName}, Художник: {ArtistLastname}, " +
-                   $"День: {Day}, Кiлькiсть вiдвiдувачiв: {VisitersCount}, Коментар: {Comment}";
-        }
-        
-        public virtual ArrayList ReadFromFile(string path)
+        public ArrayList ReadFromFile(string path)
         {
             ArrayList days = new ArrayList();
             string line;
@@ -96,7 +68,7 @@ namespace lab_5_ex_2
             return exhibitionDay;
         }
         
-        public void writeToDatabase(string path, ArrayList exhibitionDays)
+        public void WriteToDatabase(string path, ArrayList exhibitionDays)
         {
             StreamWriter streamWriter;
             streamWriter = File.CreateText(path);
@@ -108,16 +80,16 @@ namespace lab_5_ex_2
         }
 
         public List<ExhibitionDay> CommentsByKeyword(string keyword, ArrayList exhibitionDays)
-        {
-            List<ExhibitionDay> comments = new List<ExhibitionDay>();
-            foreach (ExhibitionDay day in exhibitionDays)
-            {
-                if (day.Comment.ToLower().Contains(keyword.ToLower()))
-                    comments.Add(day);
-            }
+         {
+             List<ExhibitionDay> comments = new List<ExhibitionDay>();
+             foreach (ExhibitionDay day in exhibitionDays)
+             {
+                 if (day.Comment.ToLower().Contains(keyword.ToLower()))
+                     comments.Add(day);
+             }
 
-            return comments;
-        }
+             return comments;
+         }
 
         public ExhibitionDay FindMinVisitersDay(ArrayList exhibitionDays)
         {
@@ -136,6 +108,18 @@ namespace lab_5_ex_2
             foreach (ExhibitionDay exhibitionDay in exhibitionDays)
                 counter += exhibitionDay.VisitersCount;
             return counter;
+        }
+        
+        public string ExhibitionName
+        {
+            get => exhibitionName;
+            set => exhibitionName = value;
+        }
+
+        public string ArtistLastname
+        {
+            get => artistLastname;
+            set => artistLastname = value;
         }
     }
 }

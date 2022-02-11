@@ -1,6 +1,5 @@
 ﻿using System;
 using MyLibrary;
-
 namespace lab_4_ex_1
 {
     public class Program
@@ -16,7 +15,6 @@ namespace lab_4_ex_1
                     enterprise.Month, enterprise.Plan, enterprise.Fact, enterprise.PercentDone);
             }
         }
-
         private static Enterprise[] AddNew(Enterprise[] enterprises)
         {
             Console.Write("Введiть мiсяць випуску продукцiї: ");
@@ -36,7 +34,6 @@ namespace lab_4_ex_1
                     break;
                 }
             }
-
             try
             {
                 if (!exist)
@@ -48,16 +45,14 @@ namespace lab_4_ex_1
             }
             return enterprises;
         }
-
         private static void PrintMinAndMax(Enterprise[] enterprises)
         {
             Array.Sort(enterprises);
             Console.WriteLine("Мiсяць з найменшим вiдсотком виконаного плану: {0} - {1}%", 
                 enterprises[0].Month, enterprises[0].PercentDone);
-            Console.WriteLine("Мiсяць з найбільшим вiдсотком виконаного плану: {0} - {1}%", 
+            Console.WriteLine("Мiсяць з найбiльшим вiдсотком виконаного плану: {0} - {1}%", 
                 enterprises[11].Month, enterprises[11].PercentDone);
         }
-        
         static void Main(string[] args)
         {
             Enterprise[] enterprises = {
@@ -78,8 +73,8 @@ namespace lab_4_ex_1
             {
                 bool enterNew = false;
                 Console.WriteLine("-------------------------------------------\n" +
-                                  "Ввести новi данi, чи працювати з iснуючими?\n" +
-                                  "Ввести новi - 1\n" +
+                                  "Оновити данi, чи працювати з iснуючими?\n" +
+                                  "Оновити - 1\n" +
                                   "Працювати з iснуючими - 2\n" +
                                   "Вийти - 3");
                 try

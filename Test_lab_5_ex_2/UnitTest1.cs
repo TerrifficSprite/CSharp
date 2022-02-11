@@ -3,7 +3,6 @@ using lab_5_ex_1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test_lab_5_ex_2;
-
 [TestClass]
 public class UnitTest1
 {
@@ -20,7 +19,8 @@ public class UnitTest1
     [TestMethod]
     public void FindMinVisitersDayTest()
     {
-        ExhibitionDay testExhibition = new ExhibitionDay("Назва 2", "Призвище 2", "Вiвторок", 2, "Коментар 2");
+        ExhibitionDay testExhibition = new ExhibitionDay("Назва 2", "Призвище 2", 
+            "Вiвторок", 2, "Коментар 2");
         Assert.AreEqual(testExhibition.VisitersCount, 
             exhibition.FindMinVisitersDay(exhibitonDays).VisitersCount);
     }

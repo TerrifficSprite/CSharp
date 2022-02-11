@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using MyLibrary;
 
-namespace lab_5_ex_1
+namespace lab_6_ex_2
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace lab_5_ex_1
             ArrayList exhibitonDays = new ArrayList();
             string path = "D:\\Coding\\C#\\ConsoleAppCSharp\\TSPP\\lab_5_ex_1\\database.txt";
             StreamWriter streamWriter = null;
-            Exhibition exhibition = new Exhibition();
+            IIndividual exhibition = new Exhibition();
             while (true)
             {
                 Console.WriteLine("-------------------------------------------\n" +
@@ -48,7 +48,7 @@ namespace lab_5_ex_1
                             exhibitonDays = exhibition.ReadFromFile(path);
                             ExhibitionDay exhibitionDay = new ExhibitionDay(name, artistName, day, visitersCount, comment);
                             exhibitonDays.Add(exhibitionDay);
-                            exhibition.writeToDatabase(path, exhibitonDays);
+                            exhibition.WriteToDatabase(path, exhibitonDays);
                             break;
                         case 2:
                             exhibitonDays = exhibition.ReadFromFile(path);
@@ -66,7 +66,7 @@ namespace lab_5_ex_1
                             if(editChoice == a)
                                 break;
                             exhibitonDays[editChoice-1] = exhibition.EditByNum((ExhibitionDay) exhibitonDays[editChoice-1]);
-                            exhibition.writeToDatabase(path, exhibitonDays);
+                            exhibition.WriteToDatabase(path, exhibitonDays);
                             break;
                         case 3:
                             Console.WriteLine("Виберiть запис який хочете видалити");
@@ -84,7 +84,7 @@ namespace lab_5_ex_1
                             if(deleteChoice == a)
                                 break;
                             exhibitonDays.Remove(exhibitonDays[deleteChoice - 1]);
-                            exhibition.writeToDatabase(path, exhibitonDays);
+                            exhibition.WriteToDatabase(path, exhibitonDays);
                             Console.WriteLine("Запис успiшно видалено!");
                             break;
                         case 4:

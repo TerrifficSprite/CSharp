@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lab_4_ex_2
+namespace lab_6_ex_1
 {
     public class Notebook : IComparable
     {

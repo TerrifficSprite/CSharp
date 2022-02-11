@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using MyLibrary;
 
-namespace lab_4_ex_2
+namespace lab_6_ex_1
 {
-    class Program
+    class Program : IDatabase
     {
-        public static ArrayList ReadFromFile(string path)
+        public ArrayList ReadFromFile(string path)
         {
             ArrayList days = new ArrayList();
             string line;
@@ -24,7 +26,7 @@ namespace lab_4_ex_2
             return days;
         }
         
-        public static Notebook EditByNum(Notebook notebook)
+        public Notebook EditByNum(Notebook notebook)
         {
             Methods lib = new Methods();
             int localNum = lib.NumFromKeyboard("Яке поле хочете редагувати?\n" +
@@ -51,8 +53,8 @@ namespace lab_4_ex_2
             }
             return notebook;
         }
-        
-        public static void WriteToDatabase(string path, ArrayList notebooks)
+
+        public void WriteToDatabase(string path, ArrayList notebooks)
         {
             StreamWriter streamWriter;
             streamWriter = File.CreateText(path);
@@ -65,6 +67,7 @@ namespace lab_4_ex_2
         
         static void Main(string[] args)
         {
+            IDatabase that = new Program();
             string path = "D:\\Coding\\C#\\ConsoleAppCSharp\\TSPP\\lab_4_ex_2\\database.txt";
             Methods lib = new Methods();
             
@@ -99,13 +102,13 @@ namespace lab_4_ex_2
                                 lib.NumFromKeyboard($"Номер телефону: ");
                             Console.Write("Електронна адреса: ");
                             string email = Console.ReadLine();
-                            notebooks = ReadFromFile(path);
+                            notebooks = that.ReadFromFile(path);
                             Notebook notebook = new Notebook(lastname, firstname, postAdress, phoneNumber, email);
                             notebooks.Add(notebook);
-                            WriteToDatabase(path, notebooks);
+                            that.WriteToDatabase(path, notebooks);
                             break;
                         case 2:
-                            notebooks = ReadFromFile(path);
+                            notebooks = that.ReadFromFile(path);
                             Console.WriteLine("Який запис хочете редагувати?");
                             a = 1;
                             for (int i = 0; i < notebooks.Count; i++)
@@ -119,13 +122,13 @@ namespace lab_4_ex_2
                             int editChoice = lib.NumFromKeyboard("");
                             if(editChoice == a)
                                 break;
-                            notebooks[editChoice-1] = EditByNum((Notebook) notebooks[editChoice-1]);
-                            WriteToDatabase(path, notebooks);
+                            notebooks[editChoice-1] = that.EditByNum((Notebook) notebooks[editChoice-1]);
+                            that.WriteToDatabase(path, notebooks);
                             break;
                         case 3:
                             Console.WriteLine("Виберiть запис який хочете видалити");
                             a = 1;
-                            notebooks = ReadFromFile(path);
+                            notebooks = that.ReadFromFile(path);
                             for (int i = 0; i < notebooks.Count; i++)
                             {
                                 a++;
@@ -138,11 +141,11 @@ namespace lab_4_ex_2
                             if(deleteChoice == a)
                                 break;
                             notebooks.Remove(notebooks[deleteChoice - 1]);
-                            WriteToDatabase(path, notebooks);
+                            that.WriteToDatabase(path, notebooks);
                             Console.WriteLine("Запис успiшно видалено!");
                             break;
                         case 4:
-                            notebooks = ReadFromFile(path);
+                            notebooks = that.ReadFromFile(path);
                             notebooks.Sort();
                             foreach (Notebook n in notebooks)
                             {
