@@ -1,7 +1,7 @@
 ﻿
 namespace lab_8_ex_2
 {
-    partial class EditForm
+    partial class PrintForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,6 @@ namespace lab_8_ex_2
             this.Employees = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliversInDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AverageSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,12 +49,11 @@ namespace lab_8_ex_2
             this.Employees,
             this.DeliversInDay,
             this.AverageSalary});
-            this.dataGridView1.Location = new System.Drawing.Point(2, 8);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(573, 318);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.TabIndex = 1;
             // 
             // NameA
             // 
@@ -68,59 +65,34 @@ namespace lab_8_ex_2
             // 
             this.Address.HeaderText = "Адреса";
             this.Address.Name = "Address";
-            this.Address.Width = 160;
+            this.Address.Width = 130;
             // 
             // Employees
             // 
             this.Employees.HeaderText = "Кількість співробітників";
             this.Employees.Name = "Employees";
-            this.Employees.Width = 105;
+            this.Employees.Width = 120;
             // 
             // DeliversInDay
             // 
             this.DeliversInDay.HeaderText = "Закази в день";
             this.DeliversInDay.Name = "DeliversInDay";
-            this.DeliversInDay.Width = 80;
+            this.DeliversInDay.Width = 85;
             // 
             // AverageSalary
             // 
             this.AverageSalary.HeaderText = "Середня зарплата";
             this.AverageSalary.Name = "AverageSalary";
-            this.AverageSalary.Width = 80;
+            this.AverageSalary.Width = 90;
             // 
-            // button1
+            // PrintForm
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(0, 358);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(576, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Змінити дані";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(-2, 330);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(572, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // EditForm
-            // 
-            this.ClientSize = new System.Drawing.Size(576, 381);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(574, 319);
             this.Controls.Add(this.dataGridView1);
-            this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "EditForm";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Редагувати записи";
+            this.Name = "PrintForm";
+            this.Text = "PrintForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -129,8 +101,6 @@ namespace lab_8_ex_2
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Employees;

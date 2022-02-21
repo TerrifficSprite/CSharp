@@ -110,6 +110,7 @@ namespace lab_8_ex_2
             this.label2.TabIndex = 7;
             this.label2.Text = "Введені невірні дані!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // AddDelivery
             // 

@@ -67,7 +67,7 @@ namespace lab_6_ex_2
             }
             return exhibitionDay;
         }
-        
+
         public void WriteToDatabase(string path, ArrayList exhibitionDays)
         {
             StreamWriter streamWriter;

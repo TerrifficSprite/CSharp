@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyLibrary;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MyLibrary;
 
 namespace lab_8_ex_2
 {
-    public partial class EditForm : Form
+    public partial class DeleteForm : Form
     {
 
         private static List<Delivery> getFromFile(string path)
@@ -53,59 +54,68 @@ namespace lab_8_ex_2
         string path = "D:\\Coding\\C#\\ConsoleAppCSharp\\TSPP\\lab_8_ex_2\\database.txt";
         Methods lib = new Methods();
 
-        public EditForm()
-        { 
+        public DeleteForm()
+        {
             InitializeComponent();
             label1.Hide();
             List<Delivery> deliveries = getFromFile(path);
+            initDataGridView(deliveries);
+        }
+
+        private void initDataGridView(List<Delivery> deliveries)
+        {
+            dataGridView1.Rows.Clear();
             for (int i = 0; i < deliveries.Count; i++)
             {
                 Delivery d = deliveries[i];
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = d.Name;
-                dataGridView1.Rows[i].Cells[1].Value = d.Address;
-                dataGridView1.Rows[i].Cells[2].Value = d.Employees;
-                dataGridView1.Rows[i].Cells[3].Value = d.DeliversInDay;
-                dataGridView1.Rows[i].Cells[4].Value = d.AverageSalary;
+                dataGridView1.Rows[i].Cells[0].Selected = false;
+                dataGridView1.Rows[i].Cells[1].Value = d.Name;
+                dataGridView1.Rows[i].Cells[2].Value = d.Address;
+                dataGridView1.Rows[i].Cells[3].Value = d.Employees;
+                dataGridView1.Rows[i].Cells[4].Value = d.DeliversInDay;
+                dataGridView1.Rows[i].Cells[5].Value = d.AverageSalary;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<Delivery> deliveries = new List<Delivery>();
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            List<Delivery> deliveries = getFromFile(path);
+            ArrayList rows = new ArrayList();
+            for(int i = 0; i < dataGridView1.RowCount; i++)
             {
-                Delivery d = new Delivery();
-                d.Name = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                d.Address = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    try {
-                        d.Employees = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        d.DeliversInDay = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                        d.AverageSalary = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
-                        deliveries.Add(d);
-                                        }
-                catch (NullReferenceException ex)
+                try
                 {
-                    label1.Text = "Поля не можуть бути пустими!";
-                    label1.Show();
-                    break;
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == "True")
+                        rows.Add(i);
                 }
-                catch(FormatException ex)
+                catch (Exception exception)
                 {
-                    label1.Text = "Неможливо конвертувати значення в число!";
+                    Console.WriteLine(exception);
+                }
+            }
+            rows.Reverse();
+            for (int j = 0; j < rows.Count; j++)
+            {
+                try
+                {
+                    int i = (int) rows[j];
+                    Delivery d = new Delivery();
+                    d.Name = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    d.Address = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                    d.Employees = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                    d.DeliversInDay = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                    d.AverageSalary = int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
+                    deliveries.RemoveAt(i);
+                    writeToDatabase(path, deliveries);
+                    initDataGridView(deliveries);
                     label1.Show();
+                }catch
+                {
+                    initDataGridView(deliveries);
                     break;
                 }
             }
-            writeToDatabase(path, deliveries);
-            label1.Text = "Дані успішно оновлені!";
-            label1.ForeColor = Color.Green;
-            label1.Show();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

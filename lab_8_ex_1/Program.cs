@@ -169,8 +169,8 @@ namespace lab_8_ex_1
                             for (int i = 0; i < deliveries.Count; i++)
                             {
                                 Delivery d = deliveries[i];
-                                Console.WriteLine($"{d.Name},\t адреса: {d.Address},\t кiлькiсть спiвробiтникiв: {d.Employees},\t" +
-                                                  $" кiлькiсть заказiв в день: {d.DeliversInDay},\t середня зарплата: {d.AverageSalary}");
+                                Console.WriteLine($"{d.Name}, адреса: {d.Address}, кiлькiсть спiвробiтникiв: {d.Employees}," +
+                                                  $" кiлькiсть заказiв в день: {d.DeliversInDay}, середня зарплата: {d.AverageSalary}");
                             }
                             break;
                         case 5:

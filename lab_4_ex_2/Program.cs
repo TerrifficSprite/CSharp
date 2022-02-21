@@ -2,7 +2,6 @@
 using System.Collections;
 using System.IO;
 using MyLibrary;
-
 namespace lab_4_ex_2
 {
     class Program
@@ -23,7 +22,7 @@ namespace lab_4_ex_2
             reader.Close();
             return days;
         }
-        
+       
         public static Notebook EditByNum(Notebook notebook)
         {
             Methods lib = new Methods();
@@ -51,7 +50,6 @@ namespace lab_4_ex_2
             }
             return notebook;
         }
-        
         public static void WriteToDatabase(string path, ArrayList notebooks)
         {
             StreamWriter streamWriter;

@@ -32,14 +32,29 @@ namespace lab_8_ex_2
                 int delivers = int.Parse(this.delivers.Text);
                 int salary = int.Parse(this.salary.Text);
                 deliveries.Add(new Delivery(name, address, employees, delivers, salary));
-                this.Close();
+                library.writeToDatabase(path, deliveries);
+                label2.Text = "Запис успішно добавлено!";
+                label2.ForeColor = Color.Green;
+                label2.Hide();
+                label2.Show();
+                this.name.Text = "";
+                this.address.Text = "";
+                this.employees.Text = "";
+                this.delivers.Text = "";
+                this.salary.Text = "";
             }
             catch
             {
+                label2.Text = "Введені невірні дані!";
+                label2.ForeColor = Color.Red;
                 label2.Hide();
                 label2.Show();
             }
-            library.writeToDatabase(path, deliveries);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
